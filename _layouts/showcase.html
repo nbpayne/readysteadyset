@@ -1,0 +1,134 @@
+---
+layout: default
+---
+
+<article class="showcase-post">
+
+  <!-- Hero -->
+  <section class="showcase-hero">
+    {% if page.hero_image %}
+    <img 
+      src="{{ page.hero_image | relative_url }}" 
+      alt="{{ page.title }}"
+      class="loaded"
+    />
+    {% else %}
+    <div style="position:absolute;inset:0;background:linear-gradient(135deg,#5C2E12,#7B3F1E);"></div>
+    {% endif %}
+
+    <div class="showcase-hero__content container">
+      <div class="showcase-meta">
+        <span>{{ page.category | default: "Showcase" }}</span>
+        <span class="dot"></span>
+        <span>{{ page.production_type | default: "Film / Photography" }}</span>
+      </div>
+      <h1>{{ page.title }}</h1>
+      {% if page.tagline %}
+      <p style="color:rgba(245,237,216,0.7);font-size:1.25rem;max-width:48ch;line-height:1.6;">{{ page.tagline }}</p>
+      {% endif %}
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="showcase-body section">
+    <div class="container">
+      <div style="max-width:860px;">
+
+        {% if page.intro %}
+        <p class="showcase-intro" data-reveal>{{ page.intro }}</p>
+        {% endif %}
+
+        {{ content }}
+
+        <!-- Flat configuration details -->
+        {% if page.flats_used or page.shoot_days %}
+        <div style="margin-top:3rem;padding:2rem;background:#F5EDD8;border:1px solid rgba(123,63,30,0.12);">
+          <p class="section-label" style="margin-bottom:1.5rem;">Production Details</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:2rem;">
+            {% if page.flats_used %}
+            <div>
+              <p style="font-family:'Playfair Display',serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,16,9,0.45);margin-bottom:0.25rem;">Flats Used</p>
+              <p style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#7B3F1E;">{{ page.flats_used }}</p>
+            </div>
+            {% endif %}
+            {% if page.shoot_days %}
+            <div>
+              <p style="font-family:'Playfair Display',serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,16,9,0.45);margin-bottom:0.25rem;">Shoot Days</p>
+              <p style="font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:#7B3F1E;">{{ page.shoot_days }}</p>
+            </div>
+            {% endif %}
+            {% if page.configuration %}
+            <div>
+              <p style="font-family:'Playfair Display',serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,16,9,0.45);margin-bottom:0.25rem;">Configuration</p>
+              <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#7B3F1E;">{{ page.configuration }}</p>
+            </div>
+            {% endif %}
+            {% if page.finish %}
+            <div>
+              <p style="font-family:'Playfair Display',serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,16,9,0.45);margin-bottom:0.25rem;">Wall Finish</p>
+              <p style="font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;color:#7B3F1E;">{{ page.finish }}</p>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- Gallery -->
+        {% if page.gallery and page.gallery.size > 0 %}
+        <div class="post-gallery" data-reveal>
+          <p class="section-label">Gallery</p>
+          <div class="gallery-grid">
+            {% for image in page.gallery %}
+            <div class="gallery-item {% cycle 'gallery-item--wide', 'gallery-item--narrow', 'gallery-item--half', 'gallery-item--half' %}" style="aspect-ratio:{% cycle '4/3','3/4','1/1','4/3' %}">
+              <img
+                data-src="{{ image.src | relative_url }}"
+                data-lightbox="{{ image.src | relative_url }}"
+                data-caption="{{ image.caption }}"
+                alt="{{ image.caption | default: page.title }}"
+                loading="lazy"
+              />
+            </div>
+            {% endfor %}
+          </div>
+          {% if page.gallery_caption %}
+          <p class="gallery-caption">{{ page.gallery_caption }}</p>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        <!-- CTA -->
+        <div style="margin-top:4rem;padding:3rem;background:#7B3F1E;color:#F5EDD8;" data-reveal>
+          <p style="font-family:'Playfair Display',serif;font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#F5EDD8;opacity:0.6;margin-bottom:1rem;">Inspired by this look?</p>
+          <h3 style="font-family:'Playfair Display',serif;font-size:1.75rem;color:#F5EDD8;margin-bottom:1rem;">Let's build your set.</h3>
+          <p style="color:#F5EDD8;opacity:0.75;margin-bottom:2rem;max-width:45ch;">Every configuration is unique. Get in touch and we'll work out the best setup for your production.</p>
+          <a href="{{ '/contact/' | relative_url }}" class="btn btn--outline-cream btn--block-mobile">Enquire Now <span class="btn-arrow">{% include arrow.html %}</span></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Prev / Next navigation -->
+  <section style="background:#F5EDD8;padding:3rem 0;">
+    <div class="container">
+      <div class="showcase-nav">
+        {% if page.previous.url %}
+        <a href="{{ page.previous.url | relative_url }}" class="showcase-nav__item">
+          <p class="direction">{% include arrow-left.html %} Previous</p>
+          <p class="title">{{ page.previous.title }}</p>
+        </a>
+        {% else %}
+        <div></div>
+        {% endif %}
+
+        {% if page.next.url %}
+        <a href="{{ page.next.url | relative_url }}" class="showcase-nav__item showcase-nav__item--next">
+          <p class="direction">Next {% include arrow.html %}</p>
+          <p class="title">{{ page.next.title }}</p>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+
+</article>

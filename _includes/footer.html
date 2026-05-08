@@ -1,0 +1,48 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <img 
+          src="{{ '/assets/images/rss-logo.jpg' | relative_url }}" 
+          alt="{{ site.title }}"
+          width="140"
+          height="56"
+          class="loaded"
+        />
+        <p>Professional film set flat hire in Sydney. Build the set your production deserves - cost-efficiently, sustainably, and with total creative freedom.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <ul>
+          {% for link in site.nav_links %}
+          <li><a href="{{ link.url | relative_url }}">{{ link.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul>
+          <li>
+            <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+          </li>
+          <li>
+            <a href="tel:{{ site.phone | remove: ' ' }}">{{ site.phone }}</a>
+          </li>
+          <li>{{ site.location }}</li>
+          <li style="margin-top:1rem;">
+            <a href="{{ '/contact/' | relative_url }}" style="display:inline-block;padding:0.5rem 1.25rem;border:1px solid rgba(245,237,216,0.2);font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:rgba(245,237,216,0.7);transition:all 0.2s;" onmouseover="this.style.borderColor='rgba(245,237,216,0.6)';this.style.color='#F5EDD8'" onmouseout="this.style.borderColor='rgba(245,237,216,0.2)';this.style.color='rgba(245,237,216,0.7)'">Enquire Now</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ site.title }}. All rights reserved. Sydney, Australia.</p>
+      <p>Film set hire. Built different.</p>
+    </div>
+  </div>
+</footer>

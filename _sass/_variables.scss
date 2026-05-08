@@ -1,0 +1,70 @@
+// =============================================================================
+// READY STEADY SET - Design Tokens
+// =============================================================================
+
+// Colors (drawn directly from the logo)
+$color-brown:       #7B3F1E;
+$color-brown-dark:  #5C2E12;
+$color-brown-light: #9B5A35;
+$color-cream:       #F5EDD8;
+$color-cream-warm:  #EDE0C4;
+$color-cream-dark:  #D4C4A0;
+$color-black:       #1A1009;
+$color-white:       #FFFEF9;
+$color-accent:      #C4631A;
+
+// Typography
+$font-display:    'Playfair Display', Georgia, serif;
+$font-body:       'Source Serif 4', Georgia, serif;
+$font-mono:       'JetBrains Mono', monospace;
+
+// Scale - bumped up for accessibility and readability
+// Base is 18px (1.125rem) so all relative sizes inherit the uplift
+$text-xs:     0.875rem;   // 15.75px - was 0.64rem (10px) - labels, captions
+$text-sm:     1rem;       // 18px    - was 0.8rem (13px) - secondary text
+$text-base:   1.125rem;   // 20px    - was 1rem (16px)   - body copy
+$text-md:     1.375rem;   // 24.75px - was 1.25rem       - lead text
+$text-lg:     1.625rem;   // 29.25px - was 1.563rem
+$text-xl:     2rem;       // 36px    - was 1.953rem
+$text-2xl:    2.5rem;     // 45px    - was 2.441rem
+$text-3xl:    3.125rem;   // 56px    - was 3.052rem
+$text-4xl:    3.75rem;    // 67px    - was 3.815rem
+$text-5xl:    4.5rem;     // 81px    - was 4.768rem
+$text-hero:   6rem;       // 108px   - was 6.25rem
+
+// Spacing
+$space-xs:    0.25rem;
+$space-sm:    0.5rem;
+$space-md:    1rem;
+$space-lg:    1.5rem;
+$space-xl:    2rem;
+$space-2xl:   3rem;
+$space-3xl:   4rem;
+$space-4xl:   6rem;
+$space-5xl:   8rem;
+$space-6xl:   12rem;
+
+// Layout
+$container-max:     1320px;
+$container-wide:    1600px;
+$container-narrow:  720px;
+$border-radius:     2px;
+$border-radius-lg:  4px;
+
+// Transitions
+$transition-fast:   150ms ease;
+$transition-base:   300ms ease;
+$transition-slow:   600ms cubic-bezier(0.16, 1, 0.3, 1);
+
+// Breakpoints
+$bp-sm:   480px;
+$bp-md:   768px;
+$bp-lg:   1024px;
+$bp-xl:   1280px;
+
+// Z-index layers
+$z-base:      1;
+$z-above:     10;
+$z-overlay:   100;
+$z-modal:     1000;
+$z-nav:       900;

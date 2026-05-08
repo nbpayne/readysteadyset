@@ -1,0 +1,74 @@
+---
+layout: default
+title: Showcase
+description: See how Ready Steady Set flats have been configured for music videos, bedrooms, fashion shoots and more. Every project is unique.
+permalink: /showcase/
+---
+
+<!-- Page Hero -->
+<section style="padding:calc(clamp(4rem,8vw,8rem) + 80px) 0 clamp(3rem,6vw,5rem);background:#7B3F1E;">
+  <div class="container">
+    <p class="section-label section-label--cream">Our Work</p>
+    <h1 style="font-size:clamp(2.5rem,7vw,6rem);color:#F5EDD8;line-height:0.95;letter-spacing:-0.03em;max-width:12ch;margin-bottom:2rem;">
+      One set.<br /><em style="opacity:0.55;font-style:italic;">Infinite looks.</em>
+    </h1>
+    <p style="font-size:clamp(1rem,2vw,1.25rem);color:rgba(245,237,216,0.7);max-width:48ch;line-height:1.6;">
+      Each showcase below uses the same modular flats - assembled, painted, 
+      dressed, and lit differently to create a totally unique environment.
+    </p>
+  </div>
+</section>
+
+<!-- Showcase Grid -->
+<section style="padding:clamp(3rem,8vw,6rem) 0;background:#FFFEF9;">
+  <div class="container">
+    <div class="showcase-grid">
+      {% assign showcases = site.showcase | sort: 'order' %}
+      {% for item in showcases %}
+      <a href="{{ item.url | relative_url }}" class="showcase-card" data-reveal data-reveal-delay="{{ forloop.index | modulo: 3 | plus: 1 }}">
+        <div class="showcase-card__image-wrap">
+          {% if item.thumb %}
+          <img 
+            data-src="{{ item.thumb | relative_url }}"
+            alt="{{ item.title }}"
+            class="showcase-card__image"
+          />
+          {% else %}
+          <div style="width:100%;height:100%;background:linear-gradient(135deg,{% cycle '#9B5A35','#5C2E12','#7B3F1E' %},{% cycle '#5C2E12','#7B3F1E','#9B5A35' %});display:flex;align-items:center;justify-content:center;">
+            <span style="color:rgba(245,237,216,0.25);font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;">{{ item.title | slice: 0 }}</span>
+          </div>
+          {% endif %}
+          <div class="showcase-card__overlay">
+            <span style="color:#F5EDD8;font-family:'Playfair Display',serif;font-size:0.875rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;">View Project {% include arrow.html %}</span>
+          </div>
+        </div>
+        <div class="showcase-card__body">
+          <p class="showcase-card__category">{{ item.category | default: "Showcase" }}</p>
+          <h3 class="showcase-card__title">{{ item.title }}</h3>
+          <p class="showcase-card__excerpt">{{ item.excerpt | strip_html | truncate: 110 }}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+
+    {% if site.showcase.size == 0 %}
+    <div style="text-align:center;padding:8rem 0;color:rgba(26,16,9,0.4);">
+      <p style="font-family:'Playfair Display',serif;font-size:1.25rem;">Showcase projects coming soon.</p>
+      <p style="margin-top:1rem;">In the meantime, <a href="{{ '/contact/' | relative_url }}" style="color:#7B3F1E;border-bottom:1px solid rgba(123,63,30,0.3);">get in touch</a> to discuss your project.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section style="padding:clamp(3rem,8vw,6rem) 0;background:#F5EDD8;border-top:1px solid rgba(123,63,30,0.1);">
+  <div class="container">
+    <div class="cta-row">
+      <div>
+        <h2 style="font-size:clamp(1.5rem,3vw,2.5rem);margin-bottom:1rem;">Have a project in mind?</h2>
+        <p style="color:rgba(26,16,9,0.6);max-width:45ch;line-height:1.6;">Tell us your brief - we'll work out the configuration, timeline, and cost.</p>
+      </div>
+      <a href="{{ '/contact/' | relative_url }}" class="btn btn--primary btn--lg btn--block-mobile">Start a Conversation</a>
+    </div>
+  </div>
+</section>

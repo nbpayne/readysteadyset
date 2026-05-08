@@ -1,0 +1,73 @@
+title: Ready Steady Set
+tagline: Film Set Hire - Sydney
+description: >-
+  Professional film set flats for hire in Sydney. Build the perfect studio set 
+  for your production - cost-efficient, sustainable, and endlessly configurable.
+url: "https://yourusername.github.io"
+baseurl: "/ready-steady-set"
+
+email: hello@readysteadyset.com.au
+phone: "+61 4XX XXX XXX"
+location: Sydney, Australia
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+permalink: /showcase/:title/
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-minifier
+
+# Jekyll Minifier settings
+jekyll-minifier:
+  compress_css: true
+  compress_javascript: true
+  compress_json: true
+  remove_comments: true
+  uglifier_args:
+    harmony: true
+
+# Collections
+collections:
+  showcase:
+    output: true
+    permalink: /showcase/:name/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "showcase"
+    values:
+      layout: "showcase"
+
+# Sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .bundle
+  - .sass-cache
+  - README.md
+  - "*.sh"
+
+# Navigation
+nav_links:
+  - title: "Showcase"
+    url: "/showcase/"
+  - title: "How It Works"
+    url: "/how-it-works/"
+  - title: "Pricing"
+    url: "/pricing/"
+  - title: "Contact"
+    url: "/contact/"

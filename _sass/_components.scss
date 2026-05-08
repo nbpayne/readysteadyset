@@ -1,0 +1,534 @@
+// =============================================================================
+// COMPONENTS - Buttons, Cards, Badges, etc.
+// =============================================================================
+
+// --- Buttons ---
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: $space-md $space-2xl;
+  min-height: 52px; // Accessible touch target
+  border: 2px solid transparent;
+  transition: all $transition-base;
+  cursor: pointer;
+  white-space: nowrap;
+  min-height: unset; // override base a rule
+}
+
+.btn--primary {
+  background: $color-brown;
+  color: $color-cream;
+  border-color: $color-brown;
+  min-height: 52px;
+
+  &:hover {
+    background: $color-brown-dark;
+    border-color: $color-brown-dark;
+  }
+}
+
+.btn--outline {
+  background: transparent;
+  color: $color-brown;
+  border-color: $color-brown;
+  min-height: 52px;
+
+  &:hover {
+    background: $color-brown;
+    color: $color-cream;
+  }
+}
+
+.btn--outline-cream {
+  background: transparent;
+  color: $color-cream;
+  border-color: $color-cream;
+  min-height: 52px;
+
+  &:hover {
+    background: $color-cream;
+    color: $color-brown;
+  }
+}
+
+.btn--lg {
+  padding: $space-lg $space-3xl;
+  font-size: $text-base;
+  min-height: 60px;
+}
+
+.btn-arrow {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  transition: transform $transition-base;
+
+  // Inherit stroke colour from the button text colour
+  svg {
+    display: block;
+    // Slightly larger in lg buttons
+    .btn--lg & {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .btn:hover & {
+    transform: translateX(5px);
+  }
+}
+
+// --- Section Labels ---
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-md;
+  font-family: $font-display;
+  font-size: $text-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-brown;
+  margin-bottom: $space-lg;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: currentColor;
+    flex-shrink: 0;
+  }
+
+  &--cream {
+    color: $color-cream-warm;
+  }
+}
+
+// --- Showcase Cards ---
+.showcase-card {
+  position: relative;
+  overflow: hidden;
+  background: $color-cream-warm;
+  display: block;
+  min-height: unset; // override base a rule
+
+  &:hover .showcase-card__image {
+    transform: scale(1.04);
+  }
+
+  &:hover .showcase-card__overlay {
+    opacity: 1;
+  }
+}
+
+.showcase-card__image-wrap {
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+}
+
+.showcase-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.showcase-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba($color-brown-dark, 0.85) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity $transition-slow;
+  display: flex;
+  align-items: flex-end;
+  padding: $space-xl;
+}
+
+.showcase-card__body {
+  padding: $space-xl;
+  border-top: 1px solid rgba($color-brown, 0.1);
+}
+
+.showcase-card__category {
+  font-size: $text-xs;
+  font-family: $font-display;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-brown-light;
+  margin-bottom: $space-sm;
+}
+
+.showcase-card__title {
+  font-family: $font-display;
+  font-size: $text-lg;
+  font-weight: 700;
+  color: $color-black;
+  line-height: 1.2;
+  margin-bottom: $space-md;
+}
+
+.showcase-card__excerpt {
+  font-size: $text-sm;
+  color: rgba($color-black, 0.65);
+  line-height: 1.65;
+}
+
+// --- Pillar Cards ---
+.pillar-card {
+  padding: $space-2xl;
+  border: 1px solid rgba($color-brown, 0.12);
+  background: $color-white;
+  position: relative;
+  overflow: hidden;
+  transition: transform $transition-slow, box-shadow $transition-slow;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 0;
+    background: $color-brown;
+    transition: height $transition-slow;
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 24px 48px rgba($color-brown, 0.12);
+
+    &::before { height: 100%; }
+  }
+}
+
+.pillar-number {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  font-weight: 700;
+  color: rgba($color-brown, 0.1);
+  line-height: 1;
+  margin-bottom: $space-lg;
+}
+
+// --- Pricing Cards ---
+.pricing-card {
+  padding: $space-3xl $space-2xl;
+  border: 2px solid rgba($color-brown, 0.15);
+  background: $color-white;
+  position: relative;
+
+  &--featured {
+    background: $color-brown;
+    border-color: $color-brown;
+
+    .pricing-card__label,
+    .pricing-card__title,
+    .pricing-card__price,
+    .pricing-card__unit,
+    .pricing-card__feature {
+      color: $color-cream;
+    }
+
+    .pricing-card__feature {
+      border-color: rgba($color-cream, 0.2);
+    }
+
+    .pricing-badge {
+      background: $color-cream;
+      color: $color-brown;
+    }
+  }
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: $color-accent;
+  color: $color-cream;
+  font-family: $font-display;
+  font-size: $text-xs;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: $space-xs $space-lg;
+  white-space: nowrap;
+}
+
+.pricing-card__label {
+  font-family: $font-display;
+  font-size: $text-xs;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $color-brown-light;
+  margin-bottom: $space-lg;
+}
+
+.pricing-card__title {
+  font-size: $text-xl;
+  margin-bottom: $space-xl;
+}
+
+.pricing-card__price {
+  font-family: $font-display;
+  font-size: $text-4xl;
+  font-weight: 700;
+  color: $color-brown;
+  line-height: 1;
+}
+
+.pricing-card__unit {
+  font-size: $text-sm;
+  color: rgba($color-black, 0.5);
+  margin-bottom: $space-2xl;
+}
+
+.pricing-card__feature {
+  display: flex;
+  align-items: flex-start;
+  gap: $space-md;
+  padding: $space-md 0;
+  border-bottom: 1px solid rgba($color-brown, 0.1);
+  font-size: $text-sm;
+  color: $color-black;
+  line-height: 1.5;
+
+  svg { flex-shrink: 0; margin-top: 3px; }
+}
+
+// --- Dividers ---
+.divider {
+  border: none;
+  border-top: 1px solid rgba($color-brown, 0.12);
+  margin: $space-4xl 0;
+}
+
+// --- Stats strip ---
+.stat {
+  text-align: center;
+  padding: $space-2xl $space-lg;
+
+  @media (max-width: $bp-md) {
+    padding: $space-xl $space-lg;
+    border-left: none !important;
+    border-top: 1px solid rgba($color-cream, 0.15);
+
+    &:first-child {
+      border-top: none;
+    }
+  }
+
+  + .stat {
+    border-left: 1px solid rgba($color-cream, 0.15);
+  }
+}
+
+.stat__number {
+  font-family: $font-display;
+  font-size: clamp(#{$text-2xl}, 5vw, #{$text-4xl});
+  font-weight: 700;
+  color: $color-cream;
+  line-height: 1;
+  margin-bottom: $space-sm;
+}
+
+.stat__label {
+  font-size: $text-sm;
+  color: rgba($color-cream, 0.65);
+  letter-spacing: 0.05em;
+  max-width: none;
+}
+
+// --- Gallery Grid ---
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $space-md;
+
+  @media (max-width: $bp-md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.gallery-item {
+  overflow: hidden;
+  background: $color-cream-warm;
+
+  &--wide {
+    grid-column: span 8;
+    @media (max-width: $bp-md) { grid-column: span 2; }
+  }
+  &--narrow {
+    grid-column: span 4;
+    @media (max-width: $bp-md) { grid-column: span 1; }
+  }
+  &--half {
+    grid-column: span 6;
+    @media (max-width: $bp-md) { grid-column: span 2; }
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  &:hover img { transform: scale(1.03); }
+}
+
+// --- Forms ---
+.form-group {
+  margin-bottom: $space-xl;
+}
+
+.form-label {
+  display: block;
+  font-family: $font-display;
+  font-size: $text-xs;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $color-brown;
+  margin-bottom: $space-sm;
+}
+
+.form-control {
+  width: 100%;
+  padding: $space-md $space-lg;
+  border: 2px solid rgba($color-brown, 0.2);
+  background: $color-white;
+  font-family: $font-body;
+  font-size: $text-base;
+  color: $color-black;
+  border-radius: $border-radius;
+  transition: border-color $transition-fast;
+  appearance: none;
+  // Minimum height for touch targets
+  min-height: 52px;
+
+  &:focus {
+    outline: none;
+    border-color: $color-brown;
+  }
+
+  &::placeholder {
+    color: rgba($color-black, 0.35);
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 160px;
+}
+
+// --- Addon rows (pricing page) ---
+.addon-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $space-xl;
+  padding: $space-lg 0;
+  border-bottom: 1px solid rgba($color-brown, 0.1);
+
+  &:last-child { border-bottom: none; }
+
+  @media (max-width: $bp-sm) {
+    flex-direction: column;
+    gap: $space-sm;
+  }
+
+  .addon-name {
+    font-size: $text-base;
+    color: $color-black;
+  }
+
+  .addon-price {
+    font-family: $font-display;
+    font-size: $text-lg;
+    font-weight: 700;
+    color: $color-brown;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+
+// --- CTA Row ---
+// Heading on the left, button on the right. Stacks vertically on mobile,
+// button stays left-aligned (matches the heading) rather than stretching full-width.
+.cta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: $space-2xl;
+
+  @media (max-width: $bp-md) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+// Full-width buttons on mobile to prevent overflow
+@media (max-width: $bp-md) {
+  .btn--block-mobile {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+// Boxes go edge-to-edge on small screens to maximise space
+.box {
+  padding: clamp(#{$space-xl}, 4vw, #{$space-3xl});
+  background: $color-white;
+  border: 1px solid rgba($color-brown, 0.12);
+
+  @media (max-width: $bp-sm) {
+    margin-left: calc(-1 * clamp(#{$space-lg}, 5vw, #{$space-3xl}));
+    margin-right: calc(-1 * clamp(#{$space-lg}, 5vw, #{$space-3xl}));
+    border-left: none;
+    border-right: none;
+    // Restore inner padding so content doesn't touch the screen edge
+    padding-left: clamp(#{$space-lg}, 5vw, #{$space-3xl});
+    padding-right: clamp(#{$space-lg}, 5vw, #{$space-3xl});
+  }
+}
+
+// Inline button groups - centre on mobile
+.btn-group {
+  display: flex;
+  align-items: center;
+  gap: $space-lg;
+  flex-wrap: wrap;
+
+  @media (max-width: $bp-md) {
+    justify-content: center;
+
+    .btn {
+      flex: 1 1 auto;
+      justify-content: center;
+      min-width: 0;
+    }
+  }
+}
+
+
+// Inline arrow icon - used in text links, list bullets, card overlays
+.icon-arrow {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+}

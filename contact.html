@@ -1,0 +1,192 @@
+---
+layout: default
+title: Contact
+description: Get in touch with Ready Steady Set to discuss availability, pricing, and set configuration for your Sydney film production.
+permalink: /contact/
+---
+
+<div class="contact-page">
+  <div class="container">
+    <div class="contact-grid">
+
+      <!-- Info column -->
+      <div class="contact-info">
+        <p class="section-label">Get In Touch</p>
+        <h1>Let's talk about your set.</h1>
+        <p>
+          Tell us about your production &ndash; the script, the rooms you need, your studio space, 
+          and your shoot dates. We'll come back to you within 24 hours with availability 
+          and a configuration recommendation.
+        </p>
+
+        <div style="margin-top:2.5rem;">
+
+          <div class="contact-detail">
+            <span class="detail-label">Email</span>
+            <a href="mailto:{{ site.email }}" class="detail-value" style="color:#7B3F1E;border-bottom:1px solid rgba(123,63,30,0.3);transition:border-color 0.2s;" onmouseover="this.style.borderColor='#7B3F1E'" onmouseout="this.style.borderColor='rgba(123,63,30,0.3)'">
+              {{ site.email }}
+            </a>
+          </div>
+
+          <div class="contact-detail">
+            <span class="detail-label">Phone</span>
+            <a href="tel:{{ site.phone | remove: ' ' }}" class="detail-value">{{ site.phone }}</a>
+          </div>
+
+          <div class="contact-detail">
+            <span class="detail-label">Location</span>
+            <span class="detail-value">{{ site.location }}<br /><span style="font-size:0.875rem;color:rgba(26,16,9,0.5);">Delivery within Sydney metro</span></span>
+          </div>
+
+          <div class="contact-detail">
+            <span class="detail-label">Response</span>
+            <span class="detail-value">Within 24 hours</span>
+          </div>
+
+        </div>
+
+        <!-- What to include -->
+        <div class="box" style="margin-top:3rem;background:#F5EDD8;">
+          <p style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,16,9,0.4);margin-bottom:1rem;">Helpful to include</p>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.625rem;">
+            <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:rgba(26,16,9,0.65);">
+              <span style="color:#7B3F1E;flex-shrink:0;display:inline-flex;align-items:center;">{% include arrow.html %}</span>
+              Your shoot dates and number of days
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:rgba(26,16,9,0.65);">
+              <span style="color:#7B3F1E;flex-shrink:0;display:inline-flex;align-items:center;">{% include arrow.html %}</span>
+              Type of production (TVC, music video, drama, photography, etc.)
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:rgba(26,16,9,0.65);">
+              <span style="color:#7B3F1E;flex-shrink:0;display:inline-flex;align-items:center;">{% include arrow.html %}</span>
+              The room(s) you need to create
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:rgba(26,16,9,0.65);">
+              <span style="color:#7B3F1E;flex-shrink:0;display:inline-flex;align-items:center;">{% include arrow.html %}</span>
+              Studio address for delivery (Sydney metro)
+            </li>
+            <li style="display:flex;align-items:flex-start;gap:0.75rem;font-size:0.9rem;color:rgba(26,16,9,0.65);">
+              <span style="color:#7B3F1E;flex-shrink:0;display:inline-flex;align-items:center;">{% include arrow.html %}</span>
+              Any colour/finish requirements
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Form column -->
+      <div class="contact-form-wrap box" data-reveal>
+        <p style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:rgba(26,16,9,0.35);margin-bottom:2rem;">Send a Message</p>
+
+        <!-- 
+          Form action: replace with your Formspree endpoint or Netlify Forms attribute.
+          For Formspree: action="https://formspree.io/f/YOUR_FORM_ID"
+          For Netlify: add netlify attribute and remove action
+        -->
+        <form 
+          class="contact-form" 
+          action="https://formspree.io/f/YOUR_FORM_ID" 
+          method="POST"
+        >
+          <div class="grid-2" style="gap:1.5rem;">
+            <div class="form-group">
+              <label class="form-label" for="name">Your Name</label>
+              <input 
+                type="text" 
+                id="name" 
+                name="name" 
+                class="form-control" 
+                placeholder="Jane Smith" 
+                required 
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">Email Address</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-control" 
+                placeholder="jane@production.com" 
+                required 
+                autocomplete="email"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="company">Production Company / Studio</label>
+            <input 
+              type="text" 
+              id="company" 
+              name="company" 
+              class="form-control" 
+              placeholder="Acme Productions"
+              autocomplete="organization"
+            />
+          </div>
+
+          <div class="grid-2" style="gap:1.5rem;">
+            <div class="form-group">
+              <label class="form-label" for="production-type">Production Type</label>
+              <select id="production-type" name="production_type" class="form-control">
+                <option value="">Select one...</option>
+                <option value="tvc">TVC / Commercial</option>
+                <option value="music-video">Music Video</option>
+                <option value="drama">Drama / Film</option>
+                <option value="photography">Photography</option>
+                <option value="documentary">Documentary</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="flats">Approx. Flats Needed</label>
+              <select id="flats" name="flats_estimate" class="form-control">
+                <option value="">Not sure yet</option>
+                <option value="1-4">1-4 flats</option>
+                <option value="5-8">5-8 flats</option>
+                <option value="9-12">9-12 flats</option>
+                <option value="13+">13+ flats</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="dates">Shoot Dates</label>
+            <input 
+              type="text" 
+              id="dates" 
+              name="dates" 
+              class="form-control" 
+              placeholder="e.g. 15-17 July 2026 (3 days)"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="message">Tell Us About Your Set</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="form-control" 
+              placeholder="Describe the rooms / scenes you need to create, any specific finishes or colours, your studio location, and anything else that'll help us prepare the right recommendation..."
+              required
+            ></textarea>
+          </div>
+
+          <!-- Honeypot spam prevention -->
+          <input type="text" name="_gotcha" style="display:none;" tabindex="-1" autocomplete="off" />
+
+          <button type="submit" class="btn btn--primary btn--lg btn--block-mobile" style="width:100%;justify-content:center;">
+            Send Enquiry <span class="btn-arrow">{% include arrow.html %}</span>
+          </button>
+
+          <p style="font-size:0.8rem;color:rgba(26,16,9,0.4);margin-top:1rem;text-align:center;">
+            We'll respond within 24 hours. Your details are never shared.
+          </p>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>

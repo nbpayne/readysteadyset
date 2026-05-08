@@ -1,0 +1,187 @@
+// =============================================================================
+// NAVIGATION
+// =============================================================================
+
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $z-nav;
+  // Always has a solid background so hamburger is always visible
+  background: $color-cream;
+  padding: $space-md clamp(#{$space-lg}, 5vw, #{$space-3xl});
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 rgba($color-brown, 0.1);
+  transition: padding $transition-base, box-shadow $transition-base;
+
+  &.scrolled {
+    padding-top: $space-sm;
+    padding-bottom: $space-sm;
+    box-shadow: 0 2px 12px rgba($color-brown, 0.12);
+  }
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  min-height: unset;
+
+  img {
+    height: 44px;
+    width: auto;
+    opacity: 1;
+
+    @media (max-width: $bp-md) {
+      height: 36px;
+    }
+  }
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: $space-xl;
+
+  @media (max-width: $bp-lg) {
+    gap: $space-lg;
+  }
+
+  @media (max-width: $bp-md) {
+    // Hidden off-canvas on mobile, opened by toggle
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: $color-brown;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $space-2xl;
+    z-index: $z-modal;
+    padding: $space-3xl $space-xl;
+
+    &.is-open {
+      display: flex;
+    }
+  }
+}
+
+.nav-link {
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: $color-brown;
+  position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: color $transition-fast;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $color-brown;
+    transition: width $transition-base;
+  }
+
+  &:hover::after,
+  &.active::after {
+    width: 100%;
+  }
+
+  // Style inside open mobile menu
+  .nav-links.is-open & {
+    color: $color-cream;
+    font-size: $text-xl;
+    min-height: 56px;
+
+    &::after {
+      background: $color-cream;
+    }
+  }
+}
+
+.nav-cta {
+  font-family: $font-display;
+  font-size: $text-sm;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: $color-brown;
+  color: $color-cream;
+  padding: $space-sm $space-lg;
+  border: 2px solid $color-brown;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  transition: background $transition-fast, color $transition-fast;
+  white-space: nowrap;
+
+  &:hover {
+    background: transparent;
+    color: $color-brown;
+  }
+
+  @media (max-width: $bp-lg) {
+    display: none; // Hide the CTA button on smaller screens to save space
+  }
+}
+
+// Hamburger toggle
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+  z-index: $z-modal + 1;
+  // Ensure 44px touch target
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
+  min-height: unset;
+
+  @media (max-width: $bp-md) {
+    display: flex;
+  }
+
+  span {
+    display: block;
+    width: 26px;
+    height: 2px;
+    background: $color-brown;
+    transition: transform $transition-base, opacity $transition-fast, background $transition-base;
+    transform-origin: center;
+    border-radius: 1px;
+  }
+
+  &.is-open span {
+    background: $color-cream;
+
+    &:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    &:nth-child(2) { opacity: 0; transform: scaleX(0); }
+    &:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+  }
+}
+
+
+// Home link - only visible inside the mobile menu
+.nav-home-item {
+  display: none;
+
+  @media (max-width: $bp-md) {
+    display: block;
+  }
+}
