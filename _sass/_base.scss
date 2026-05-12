@@ -29,6 +29,12 @@ body {
   color: $color-black;
   background-color: $color-cream;
   overflow-x: hidden;
+  padding-top: $nav-height;
+}
+
+// Home page: hero fills the full viewport behind the transparent nav
+body.home {
+  padding-top: 0;
 }
 
 img, video {

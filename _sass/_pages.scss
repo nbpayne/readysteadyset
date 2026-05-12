@@ -4,16 +4,15 @@
 
 // --- Hero (Home) ---
 .hero {
-  min-height: 100svh; // svh = small viewport height - accounts for mobile browser chrome
+  min-height: 100svh;
   background: $color-brown;
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   overflow: hidden;
+  padding-top: $nav-height;
   padding-bottom: clamp(#{$space-4xl}, 10vw, #{$space-5xl});
-  // Push content below the fixed nav
-  padding-top: 80px;
 }
 
 .hero__bg {
@@ -253,7 +252,6 @@
   display: flex;
   align-items: flex-end;
   padding-bottom: clamp(#{$space-2xl}, 6vw, #{$space-4xl});
-  padding-top: 80px; // nav height
 
   img {
     position: absolute;
@@ -394,7 +392,7 @@
 
 // --- Pricing Page ---
 .pricing-hero {
-  padding: calc(clamp(#{$space-4xl}, 10vw, #{$space-6xl}) + 80px) 0 clamp(#{$space-4xl}, 8vw, #{$space-5xl});
+  padding: clamp(#{$space-4xl}, 10vw, #{$space-6xl}) 0 clamp(#{$space-4xl}, 8vw, #{$space-5xl});
   background: $color-brown;
   text-align: center;
   overflow: hidden;
@@ -447,7 +445,7 @@
 
 // --- Contact Page ---
 .contact-page {
-  padding-top: calc(clamp(#{$space-4xl}, 8vw, #{$space-6xl}) + 80px);
+  padding-top: clamp(#{$space-4xl}, 8vw, #{$space-6xl});
   padding-bottom: clamp(#{$space-4xl}, 10vw, #{$space-6xl});
   background: $color-cream;
 }
@@ -527,7 +525,7 @@
 
 // --- How It Works ---
 .how-hero {
-  padding: calc(clamp(#{$space-4xl}, 8vw, #{$space-6xl}) + 80px) 0 clamp(#{$space-3xl}, 6vw, #{$space-5xl});
+  padding: clamp(#{$space-4xl}, 8vw, #{$space-6xl}) 0 clamp(#{$space-3xl}, 6vw, #{$space-5xl});
   background: $color-cream;
 
   h1 {

@@ -185,3 +185,42 @@
     display: block;
   }
 }
+
+// Home page: transparent nav over the full-bleed hero, transitions to cream on scroll
+.home .site-nav {
+  background: transparent;
+  box-shadow: none;
+
+  .nav-link {
+    color: $color-cream;
+    &::after { background: $color-cream; }
+  }
+
+  .nav-cta {
+    background: transparent;
+    color: $color-cream;
+    border-color: rgba($color-cream, 0.5);
+    &:hover { background: rgba($color-cream, 0.15); color: $color-cream; }
+  }
+
+  .nav-toggle span { background: $color-cream; }
+
+  &.scrolled {
+    background: $color-cream;
+    box-shadow: 0 2px 12px rgba($color-brown, 0.12);
+
+    .nav-link {
+      color: $color-brown;
+      &::after { background: $color-brown; }
+    }
+
+    .nav-cta {
+      background: $color-brown;
+      color: $color-cream;
+      border-color: $color-brown;
+      &:hover { background: $color-brown-dark; border-color: $color-brown-dark; }
+    }
+
+    .nav-toggle span { background: $color-brown; }
+  }
+}
