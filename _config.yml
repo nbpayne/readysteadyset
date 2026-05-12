@@ -24,7 +24,7 @@ plugins:
 
 # Jekyll Minifier settings
 jekyll-minifier:
-  compress_css: true
+  compress_css: false
   compress_javascript: true
   compress_json: true
   remove_comments: true
