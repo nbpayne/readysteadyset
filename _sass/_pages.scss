@@ -456,6 +456,8 @@
   gap: clamp(#{$space-3xl}, 6vw, #{$space-5xl});
   align-items: start;
 
+  > * { min-width: 0; }
+
   @media (max-width: $bp-lg) {
     grid-template-columns: 1fr;
   }
